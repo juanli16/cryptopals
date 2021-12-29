@@ -1,10 +1,10 @@
 package main
 
 import (
-	"encoding/base64"
-	"encoding/hex"
 	"fmt"
 	"log"
+
+	"github.com/juanli16/cryptopals/internal/util"
 )
 
 const (
@@ -12,16 +12,8 @@ const (
 	challengeOutput = "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t"
 )
 
-func HexToBase64(hexString string) (string, error) {
-	hexBytes, err := hex.DecodeString(hexString)
-	if err != nil {
-		return "", err
-	}
-	return base64.StdEncoding.EncodeToString(hexBytes), nil
-}
-
 func main() {
-	answer, err := HexToBase64(challengeInput)
+	answer, err := util.HexToBase64(challengeInput)
 	if err != nil {
 		log.Fatalf("failed to decode hex string: %v", err)
 	}
