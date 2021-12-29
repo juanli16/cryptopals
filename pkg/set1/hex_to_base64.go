@@ -18,8 +18,8 @@ func main() {
 		log.Fatalf("failed to decode hex string: %v", err)
 	}
 	if answer != challengeOutput {
-		log.Fatal("failed to encode hex to base64")
+		log.Fatal("failed set1 challenge 1")
 	}
 
-	fmt.Printf("answer: %v\n", answer)
+	fmt.Printf("set1/challenge1 answer: %v\n", answer)
 }
