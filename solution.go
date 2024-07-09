@@ -9,9 +9,16 @@ func SearchString(mem *Memory) (string, error) {
 		return "", err
 	}
 
-	fmt.Println("page", string(page))
+	fmt.Println("page", page)
 
-	fmt.Println("here")
+	for _, p := range page {
+		b, err := mem.ReadAddress(int(p))
+		if err != nil {
+			return "", err
+		}
+
+		fmt.Println("address", p, "value", b)
+	}
 
 	return "hey", nil
 }
