@@ -19,6 +19,11 @@ func SearchString(mem *Memory) (string, error) {
 				return "", err
 			}
 
+			// testing
+			if len(window) == 4 {
+				return string(window), nil
+			}
+
 			if len(window) == 5 && string(window) != "gc24{" {
 				// reset window
 				window = []byte{}
