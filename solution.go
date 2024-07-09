@@ -8,6 +8,7 @@ func SearchString(mem *Memory) (string, error) {
 		window []byte
 	)
 
+	fmt.Printf("mem: %+v\n", mem)
 	for {
 		page, err := mem.ReadPage(pageN)
 		if err != nil {
