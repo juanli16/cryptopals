@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "errors"
 
 func SearchString(mem *Memory) (string, error) {
 	// Read the first page
@@ -23,13 +23,11 @@ func SearchString(mem *Memory) (string, error) {
 
 		if len(window) > 5 && string(window[len(window)-1]) == "}" {
 			// end of flag
-			fmt.Println("found ", string(window))
-			break
+			return string(window), nil
 		}
 
 		window = append(window, b)
-		fmt.Println(string(window))
 	}
 
-	return "hey", nil
+	return "", errors.New("flag not found")
 }
