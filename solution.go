@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func SearchString(mem *Memory) (string, error) {
 	var (
 		pageN  int
@@ -7,9 +9,9 @@ func SearchString(mem *Memory) (string, error) {
 	)
 
 	for {
-		// Read the first page
 		page, err := mem.ReadPage(pageN)
 		if err != nil {
+			fmt.Println("pageN", pageN)
 			return "", err
 		}
 
@@ -22,6 +24,10 @@ func SearchString(mem *Memory) (string, error) {
 			if len(window) == 5 && string(window) != "gc24{" {
 				// reset window
 				window = []byte{}
+			}
+
+			if len(window) > 5 {
+				fmt.Println("window", string(window))
 			}
 
 			if len(window) > 5 && string(window[len(window)-1]) == "}" {
