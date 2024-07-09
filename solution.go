@@ -3,11 +3,12 @@ package main
 import (
 	"context"
 	"fmt"
+
+	"golang.org/x/sync/semaphore"
 )
 
 func SearchString(mem *Memory) (string, error) {
 	var (
-		pageN  int
 		window []byte
 		sem    = semaphore.NewWeighted(4)
 		ctx    = context.Background()
@@ -16,7 +17,7 @@ func SearchString(mem *Memory) (string, error) {
 
 	for pageN := 0; pageN < 1000; pageN++ {
 		if err := sem.Acquire(ctx, 1); err != nil {
-			return "", err
+			break
 		}
 
 		go func(pageN int) {
