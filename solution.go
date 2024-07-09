@@ -11,10 +11,6 @@ func SearchString(mem *Memory) (string, error) {
 
 	fmt.Println("page", string(page))
 
-	// Search for the string "hey"
-	for i, p := range page {
-	}
-
 	fmt.Println("here")
 
 	return "hey", nil
