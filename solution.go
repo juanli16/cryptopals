@@ -2,15 +2,19 @@ package main
 
 import "fmt"
 
-type Memory interface {
-	// Reads a byte from the specified address.
-	ReadAddress(address int) (byte, error)
-
-	// Reads an entire page by its ID.
-	ReadPage(pageID int) ([]byte, error)
-}
-
 func SearchString(mem *Memory) (string, error) {
+	// Read the first page
+	page, err := mem.ReadPage(0)
+	if err != nil {
+		return "", err
+	}
+
+	fmt.Println("page", string(page))
+
+	// Search for the string "hey"
+	for i, p := range page {
+	}
+
 	fmt.Println("here")
 
 	return "hey", nil
