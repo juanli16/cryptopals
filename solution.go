@@ -4,11 +4,10 @@ import "fmt"
 
 func SearchString(mem *Memory) (string, error) {
 	var (
-		pageN  int
+		pageN  = 1
 		window []byte
 	)
 
-	fmt.Printf("mem: %+v\n", mem)
 	for {
 		page, err := mem.ReadPage(pageN)
 		if err != nil {
