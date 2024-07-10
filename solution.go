@@ -4,11 +4,11 @@ import "fmt"
 
 func SearchString(mem *Memory) (string, error) {
 	var (
-		pageN  = 1
-		window []byte
+		maxPage = 10
+		window  []byte
 	)
 
-	for {
+	for pageN := 0; pageN < maxPages; pageN++ {
 		page, err := mem.ReadPage(pageN)
 		if err != nil {
 			fmt.Println("pageN", pageN)
@@ -37,7 +37,7 @@ func SearchString(mem *Memory) (string, error) {
 
 			window = append(window, b)
 		}
-
-		pageN += 1
 	}
+
+	return "", fmt.Errorf("flag not found")
 }
