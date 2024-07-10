@@ -8,7 +8,7 @@ func SearchString(mem *Memory) (string, error) {
 		window  []byte
 	)
 
-	for pageN := 0; pageN < maxPages; pageN++ {
+	for pageN := 0; pageN < maxPage; pageN++ {
 		page, err := mem.ReadPage(pageN)
 		if err != nil {
 			fmt.Println("pageN", pageN)
